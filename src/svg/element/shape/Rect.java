@@ -3,6 +3,8 @@ package svg.element.shape;
 import svg.SVGParser;
 import svg.element.Element;
 
+import java.awt.*;
+
 //-----------------------------------------------------------------------------
 
 /**
@@ -151,8 +153,8 @@ public class Rect extends Shape
 	//-------------------------------------------------------------------------
 
 	@Override
-	public void render() 
-	{	
+	public void render()
+	{
 		// ...
 	}
 
