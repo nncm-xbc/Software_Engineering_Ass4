@@ -2,8 +2,10 @@ package main.decorators;
 
 import main.decorators.shapes.*;
 import svg.element.BaseElement;
+import svg.element.Element;
 import svg.element.shape.*;
 import svg.element.shape.Polygon;
+import svg.element.shape.path.Path;
 import svg.element.style.Fill;
 import svg.element.style.Stroke;
 import svg.element.style.StrokeWidth;
@@ -29,6 +31,7 @@ public class DecoratorFactory
         prototypes.add(new Polygon());
         prototypes.add(new Polyline());
         prototypes.add(new Rect());
+        prototypes.add(new Path());
     }
 
     // Singleton occurrence of this class
@@ -39,7 +42,7 @@ public class DecoratorFactory
     /**
      * Private constructor: only this class can construct itself.
      */
-    private DecoratorFactory()
+    public DecoratorFactory()
     {
         // Nothing to do...
     }
@@ -64,12 +67,14 @@ public class DecoratorFactory
      * @param label Symbol type to make.
      * @return New symbol of specified type, with fields unset.
      */
-    public BaseElement makeShape(final String label, final Graphics2D g2d)
+    public Element makeShape(final String label, final Graphics2D g2dImage, Element element)
     {
-        for (BaseElement prototype : prototypes)
-            if (prototype.label().equals(label))
-                prototype.render();
-
+        for (BaseElement prototype : prototypes) {
+            if (prototype.label().equals(label)) {
+                prototype.renderShape(element, g2dImage);
+                return prototype.newInstance();
+            }
+        }
         System.out.println("* Failed to find prototype for BaseElement " + label + ".");
         return null;
     }

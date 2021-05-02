@@ -1,11 +1,12 @@
 package svg.element.shape;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
 import svg.element.BaseElement;
+import svg.element.Element;
 import svg.element.style.Fill;
 import svg.element.style.Stroke;
 import svg.element.style.StrokeWidth;
@@ -99,12 +100,13 @@ public abstract class Shape extends BaseElement
 	//-------------------------------------------------------------------------
 
 //	@Override
-//	public void render()
+//	public void render(Element element, final Graphics2D g2dImage)
 //	{
 //		for (Style style : styles)
 //			style.render();
 //	}
 	
 	//-------------------------------------------------------------------------
+
 
 }

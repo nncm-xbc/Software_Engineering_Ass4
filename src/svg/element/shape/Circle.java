@@ -1,7 +1,15 @@
 package svg.element.shape;
 
+import main.decorators.Decorator;
+import main.decorators.shapes.DecoratorGraphics2DCircle;
+import main.decorators.shapes.DecoratorGraphics2DRect;
+import main.decorators.styles.DecoratorGraphics2DStrokeWidth;
 import svg.SVGParser;
 import svg.element.Element;
+import svg.element.style.StrokeWidth;
+import svg.element.style.Style;
+
+import java.awt.*;
 
 //-----------------------------------------------------------------------------
 
@@ -118,6 +126,22 @@ public class Circle extends Shape
 	public void render()
 	{
 		// ...
+	}
+
+	//-------------------------------------------------------------------------
+
+	@Override
+	public void renderShape(Element element, final Graphics2D g2dImage)
+	{
+		Circle shape = (Circle) element;
+		Decorator decorator = new DecoratorGraphics2DCircle((Circle) shape, g2dImage);
+		for (Style style : shape.styles()){
+			if (style.label() == "stroke-width") {
+				new DecoratorGraphics2DStrokeWidth((StrokeWidth) style, g2dImage).render();
+				break;
+			}
+		}
+		decorator.render();
 	}
 
 	//-------------------------------------------------------------------------

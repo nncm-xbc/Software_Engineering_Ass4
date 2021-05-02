@@ -1,5 +1,10 @@
 package svg.element;
 
+import main.decorators.Decorator;
+import main.decorators.shapes.DecoratorGraphics2DRect;
+import svg.element.shape.Rect;
+
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 //-----------------------------------------------------------------------------
@@ -70,6 +75,13 @@ public abstract class BaseElement implements Element
 		return 0;  // default implementation
 	}
 	
+	//-------------------------------------------------------------------------
+
+	public void renderShape(Element element, final Graphics2D g2dImage)
+	{
+		//...
+	}
+
 	//-------------------------------------------------------------------------
 
 }

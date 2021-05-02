@@ -2,6 +2,8 @@ package svg.element;
 
 //-----------------------------------------------------------------------------
 
+import java.awt.*;
+
 /**
  * SVG element type.
  * @author cambolbro

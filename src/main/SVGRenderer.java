@@ -72,10 +72,8 @@ public class SVGRenderer
        	g2d.setPaint(new Color(255, 127, 0));
        	g2d.drawString("Draw SVG contents here", 10, 20);
 
-       	// **
-       	// ** TODO: Draw SVG contents here.
-       	// **
 
+/*
 		for (Element element : svg.elements()) {
 			Shape shape = null;
 			Decorator decorator = null;
@@ -118,14 +116,17 @@ public class SVGRenderer
 			}
 			decorator.render();
 		}
+*/
 
-
-
+		for (Element element : svg.elements()) {
+			DecoratorFactory deco = new DecoratorFactory();
+			deco.makeShape(element.label(), g2dImage, element);
+		}
 
        	if (!view.zoom())
        	{
        		// Just draw elements
-       		g2d.drawImage(img, 0, 0, null);
+       		g2d.drawImage(img, 0, 20, null);
        	}
        	else
        	{

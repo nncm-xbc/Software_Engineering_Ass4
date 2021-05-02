@@ -131,6 +131,14 @@ public class Ellipse extends Shape
 	@Override
 	public void render()
 	{
+
+	}
+
+	//-------------------------------------------------------------------------
+
+	@Override
+	public void render()
+	{
 		// ...
 	}
 

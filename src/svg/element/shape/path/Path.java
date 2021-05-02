@@ -1,12 +1,20 @@
 package svg.element.shape.path;
 
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.decorators.Decorator;
+import main.decorators.shapes.DecoratorGraphics2DPath;
+import main.decorators.shapes.DecoratorGraphics2DRect;
+import main.decorators.styles.DecoratorGraphics2DStrokeWidth;
 import svg.SVGParser;
 import svg.element.Element;
+import svg.element.shape.Rect;
 import svg.element.shape.Shape;
+import svg.element.style.StrokeWidth;
+import svg.element.style.Style;
 
 //-----------------------------------------------------------------------------
 
@@ -153,6 +161,22 @@ public class Path extends Shape
 	public void render()
 	{
 		// ...
+	}
+
+	//-------------------------------------------------------------------------
+
+	@Override
+	public void renderShape(Element element, final Graphics2D g2dImage)
+	{
+		Path shape = (Path) element;
+		Decorator decorator = new DecoratorGraphics2DPath((Path) shape, g2dImage);
+		for (Style style : shape.styles()){
+			if (style.label() == "stroke-width") {
+				new DecoratorGraphics2DStrokeWidth((StrokeWidth) style, g2dImage).render();
+				break;
+			}
+		}
+		decorator.render();
 	}
 
 	//-------------------------------------------------------------------------
